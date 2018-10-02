@@ -9,64 +9,66 @@ header
   transition: 0.25s
   z-index: 999
   .header
-    +fb(center, space-between)
-    padding: 1rem 2rem
-    .header-content
-      width: 20%
-      .logo-container
-        height: 100%
-        width: 100%
-        .logo
-          +bg(contain, center)
-          height: 5rem
-    .header-nav
-      width: 80%
-      .menu
-        +fb(center, flex-end)
-        padding: 0
-        margin: 0
-        list-style: none
-        .menu-item
-          margin: 0 0.25rem
-          a
-            display: inline-block
-            padding: 0.5rem
-        .menu-item-has-children.rotate
-          &:after
-            transform: rotate(180deg) translateY(50%)
-            transform-origin: center
-        .menu-item-has-children
-          position: relative
-          +fb(center, center)
-          &:after
-            content: '\f107'
-            font-family: 'Font Awesome 5 Pro'
-            +fb(center, center)
-            cursor: pointer
-            position: absolute
-            top: 50%
-            right: 0.25rem
-            transform: translateY(-50%)
-            transition: 0.25s
-          .sub-menu.scrollMenu
-            // on scroll sub menu
-          .sub-menu.active
-            opacity: 1
-            pointer-events: auto
-          .sub-menu
-            opacity: 0
-            pointer-events: none
-            position: absolute
-            left: 0
-            bottom: 0
-            transform: translateY(100%)
-            padding: 0
-            .menu-item
-              margin: 0
-              list-style: none
-              white-space: nowrap
-              a
-                padding: 0.25rem
+    .header-top
+      +fb(center,space-between)
+      .header-top-left
+        +fb(center,flex-start)
+    // .header-content
+    //   width: 20%
+    //   .logo-container
+    //     height: 100%
+    //     width: 100%
+    //     .logo
+    //       +bg(contain, center)
+    //       height: 5rem
+    // .header-nav
+    //   width: 80%
+    //   .menu
+    //     +fb(center, flex-end)
+    //     padding: 0
+    //     margin: 0
+    //     list-style: none
+    //     .menu-item
+    //       margin: 0 0.25rem
+    //       a
+    //         display: inline-block
+    //         padding: 0.5rem
+    //     .menu-item-has-children.rotate
+    //       &:after
+    //         transform: rotate(180deg) translateY(50%)
+    //         transform-origin: center
+    //     .menu-item-has-children
+    //       position: relative
+    //       +fb(center, center)
+    //       &:after
+    //         content: '\f107'
+    //         font-family: 'Font Awesome 5 Pro'
+    //         +fb(center, center)
+    //         cursor: pointer
+    //         position: absolute
+    //         top: 50%
+    //         right: 0.25rem
+    //         transform: translateY(-50%)
+    //         transition: 0.25s
+    //       .sub-menu.scrollMenu
+    //         // on scroll sub menu
+    //       .sub-menu.active
+    //         opacity: 1
+    //         pointer-events: auto
+    //       .sub-menu
+    //         opacity: 0
+    //         pointer-events: none
+    //         position: absolute
+    //         left: 0
+    //         bottom: 0
+    //         transform: translateY(100%)
+    //         padding: 0
+    //         .menu-item
+    //           margin: 0
+    //           list-style: none
+    //           white-space: nowrap
+    //           a
+    //             padding: 0.25rem
 
 // Mobile Menu Button
 .mobile-button

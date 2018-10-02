@@ -1,5 +1,5 @@
 jQuery(document).ready(function( $ ) {
-
+  
 // on scroll watch header
 $(window).on("scroll ready", function() {
   if ( $(window).scrollTop() > 50 ) {
