@@ -19,7 +19,6 @@
         </div> <!-- Header Content & Logo -->
         <nav class="header-nav">
           <?php wp_nav_menu( array( 'menu' => 'Header Menu' ) ); ?>
-          <button type="button" name="search"><a href="<?php echo home_url(); ?>"><i class="fas fa-search"></i></a></button>
         </nav> <!-- Header Navigation -->
 
         <!-- Button trigger modal -->
