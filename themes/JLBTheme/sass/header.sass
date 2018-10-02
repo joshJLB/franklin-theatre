@@ -150,7 +150,18 @@ header
     //           white-space: nowrap
     //           a
     //             padding: 0.25rem
-
+header.active  
+  
+  .header
+    .header-content
+      transition: .5s
+      display: none
+    .header-middle
+      .header-content-two
+        transition: .5s
+        visibility: visible
+    .header-bottom
+      display: none
 // Mobile Menu Button
 .mobile-button
   display: none

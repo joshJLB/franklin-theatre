@@ -59,9 +59,7 @@
             </div>
           </div> <!-- Mobile Menu Button -->
         </div>
-        <div class="header-bottom" style="background-image: url(<?=home_url(); ?>/wp-content/uploads/2018/10/nav-pattern.png);">
-
-        </div>
+        <div class="header-bottom" style="background-image: url(<?=home_url(); ?>/wp-content/uploads/2018/10/nav-pattern.png);"></div>
         
       </div> <!-- Header Inner Container -->
 

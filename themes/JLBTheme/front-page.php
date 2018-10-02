@@ -10,6 +10,11 @@ get_header(); ?>
   <?php get_template_part('components/home-page/hero'); ?>
 
   <!-- Continue Sections -->
+  <section class="one">
+    <div class="one-container">
+      
+    </div>
+  </section>
 
 </main>
 
