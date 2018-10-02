@@ -13,41 +13,56 @@
   <body <?php body_class(); ?>>
     <header>
       <div class="header">
+        <div class="header-content">
+          <a class="logo-container" href="<?php echo home_url(); ?>">
+            <div class="logo" style="background-image: url('<?=get_field('header_logo', 'option'); ?>');"></div>
+          </a>
+        </div> <!-- Header Content & Logo -->
         <div class="header-top">
           <div class="header-top-left">
             <div class="header-socials">
               <?php if ( have_rows('social_media', 'option') ): ?>
               <?php while ( have_rows('social_media', 'option') ): the_row(); ?>
-                <a href="<?=get_sub_field('link'); ?>"><i class="fab fa-<?=get_sub_field('platform'); ?>"></i></a>
+                <a href="<?=get_sub_field('link'); ?>"class="header-socials-links"><i class="fab fa-<?=get_sub_field('platform'); ?>"></i></a>
               <?php endwhile; ?>
               <?php endif; ?>
             </div>
             <a href="tel:<?=get_field('phone', 'option'); ?>" class="header-phone"><?=get_field('phone', 'option'); ?></a>
           </div>
           <div class="header-top-right">
-
+            <form action="post">
+              <label ><?=get_field('header_email_cta', 'option'); ?></label>
+              <div style="background-image: url(<?=home_url(); ?>/wp-content/uploads/2018/10/nav-email-field.png;"><input type="text" class="header-email" name="EMAIL" placeholder="email address"></div>
+              <input type="submit" class="header-submit" value="Submit">
+              <img src="<?=home_url(); ?>/wp-content/uploads/2018/10/fan-element.png" alt="">
+            </form>
           </div>
         </div>
-        <div class="header-content">
+        <div class="header-middle">
           <nav class="header-nav-left">
-            <?php wp_nav_menu( array( 'menu' => 'menu_left' ) ); ?>
+              <?php wp_nav_menu( array( 'menu' => 'menu_left' ) ); ?>
           </nav>
-          <a class="logo-container" href="<?php echo home_url(); ?>">
-            <div class="logo" style="background-image: url('#logo');"></div>
-          </a>
-        </div> <!-- Header Content & Logo -->
-        <nav class="header-nav-right">
-          <?php wp_nav_menu( array( 'menu' => 'menu_right' ) ); ?>
-        </nav> <!-- Header Navigation -->
+          <div class="header-content-two">
+            <a class="logo-container-two" href="<?php echo home_url(); ?>">
+              <div class="logo-two" style="background-image: url('<?=get_field('header_logo', 'option'); ?>');"></div>
+            </a>
+          </div> <!-- Header Content & Logo -->
+          <nav class="header-nav-right">
+            <?php wp_nav_menu( array( 'menu' => 'menu_right' ) ); ?>
+          </nav> <!-- Header Navigation -->
+          <!-- Button trigger modal -->
+          <div class="mobile-button">
+            <div class="button-container">
+              <div class="bar1 bar"></div>
+              <div class="bar2 bar"></div>
+              <div class="bar3 bar"></div>
+            </div>
+          </div> <!-- Mobile Menu Button -->
+        </div>
+        <div class="header-bottom" style="background-image: url(<?=home_url(); ?>/wp-content/uploads/2018/10/nav-pattern.png);">
 
-        <!-- Button trigger modal -->
-        <div class="mobile-button">
-          <div class="button-container">
-            <div class="bar1 bar"></div>
-            <div class="bar2 bar"></div>
-            <div class="bar3 bar"></div>
-          </div>
-        </div> <!-- Mobile Menu Button -->
+        </div>
+        
       </div> <!-- Header Inner Container -->
 
       <!-- Mobile Menu -->

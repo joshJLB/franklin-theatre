@@ -64,7 +64,7 @@ gulp.task('sass', function() {
 gulp.task('scripts', function() {
   gulp.src(paths.scripts)
     .pipe(babel({
-      presets: ['env']
+      presets: ['@babel/env']
     }))
     .pipe(uglify())
     .pipe(rename({
