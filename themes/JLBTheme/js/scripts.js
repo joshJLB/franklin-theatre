@@ -85,4 +85,30 @@ function detectBrowser() {
 }
 $('body').addClass(detectBrowser());
 
+// sliders
+$('.hero-slider').slick({
+  infinite: true,
+  centerMode: true,
+  centerPadding: '0px',
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 6000,
+  responsive: [
+    {
+      breakpoint: 1440,
+      settings: {
+        centerMode: false,
+        slidesToShow: 2
+      }
+    },
+    {
+      breakpoint: 576,
+      settings: {
+        slidesToShow: 1
+      }
+    }
+  ]
+})
+
 });//close all jquery
