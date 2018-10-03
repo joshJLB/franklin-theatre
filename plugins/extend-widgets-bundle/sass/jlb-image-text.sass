@@ -6,6 +6,8 @@
     width: 80%
     +fb(stretch,flex-start)
     flex-wrap: wrap 
+    @media #{$small}
+        width: 100%
     .image-text-image
         width: 45%
         +bg(cover,center)
@@ -39,3 +41,5 @@
             font-size: 1.5rem
             text-transform: uppercase 
             +bg(contain,center)
+            @media #{$small}
+                margin: 0 auto

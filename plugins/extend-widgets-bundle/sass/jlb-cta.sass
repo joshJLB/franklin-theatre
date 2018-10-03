@@ -1,0 +1,53 @@
+@import 'variables'
+
+// CTA Styles
+.cta-container
+    padding: 5rem
+    margin: 2rem 0
+    position: relative 
+    color: #fff 
+    +bg(cover,center)
+    @media #{$large}
+        padding: 5rem 1rem
+    .cta-content
+        z-index: 3
+        position: relative
+        +fb(center,stretch)
+        flex-direction: column
+        .cta-header
+            margin-bottom: 1.5rem
+            +fb(center,center)
+            @media #{$medium}
+                flex-direction: column
+            h2 
+                padding: 0 1rem
+                margin: 0
+                font-size: 2.5rem
+                text-transform: uppercase 
+                @media #{$large}
+                    font-size: 2rem
+                @media #{$medium}
+                    padding: 1rem 0
+        p 
+            text-align: center 
+            width: 70%
+            @media #{$xlarge}
+                width: 80%
+            @media #{$medium}
+                width: 100%
+        a 
+            padding: 1.5rem 2.5rem
+            margin: 0 auto
+            display: inline-block 
+            color: #fff 
+            font-size: 1.5rem
+            text-transform: uppercase 
+            +bg(contain,center)
+    .overlay
+        z-index: 2
+        position: absolute 
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background: rgba(35,35,35,.7)
