@@ -85,6 +85,11 @@ function detectBrowser() {
 }
 $('body').addClass(detectBrowser());
 
+// substrings
+$('.two-blog-content-inner').text(function(index, currentContent) {
+  return currentContent.substr(0,750) + '...';
+});
+
 // sliders
 $('.hero-slider').slick({
   infinite: true,

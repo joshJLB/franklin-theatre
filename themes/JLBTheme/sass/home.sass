@@ -1,3 +1,72 @@
 @import 'variables'
 
 // Home Page Styling
+
+// Section Two Styles
+.two
+    margin: 3rem 0
+    .two-container
+        margin: 0 auto
+        width: 80%
+        @media #{$small}
+            width: 100%
+        .two-header
+            margin-bottom: 1.5rem
+            +fb(stretch,flex-start)
+            flex-wrap: wrap
+            @media #{$medium}
+                justify-content: center
+                padding: 0 1rem
+            h2 
+                padding-right: 1rem
+                margin: 0
+                font-size: 2.5rem
+                text-transform: uppercase
+                @media #{$medium}
+                    padding: 0
+                @media #{$small}
+                    font-size: 2rem
+            .two-header-image
+                width: 50%
+                +bg(contain,left)
+                @media #{$medium}
+                    margin-top: -1rem
+                    width: 100%
+                    height: 3rem
+                    background-size: cover
+        .two-blog-wrapper
+            +fb(stretch,flex-start)
+            flex-wrap: wrap 
+            .two-image
+                width: 45%
+                +bg(cover,center)
+                @media #{$xxlarge}
+                    width: 50%
+                @media #{$large}
+                    width: 100%
+                    height: 20rem
+                    order: -1
+            .two-blog-content
+                padding: 6rem 4rem 2rem 0
+                width: 55%
+                +fb(flex-start,stretch)
+                flex-direction: column
+                @media #{$xxlarge}
+                    width: 50%
+                @media #{$xlarge}
+                    padding: 2rem 2rem 2rem 0
+                @media #{$large}
+                    width: 100%
+                @media #{$small}
+                    padding: 1rem
+                h3 
+                    margin-bottom: 1rem
+                    font-size: 2rem
+                    text-transform: uppercase
+                a 
+                    padding: 1.5rem 2.5rem
+                    margin-left: auto
+                    display: inline-block 
+                    font-size: 1.5rem
+                    text-transform: uppercase 
+                    +bg(contain,center)
