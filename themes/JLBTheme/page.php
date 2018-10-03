@@ -13,7 +13,8 @@ get_header(); ?>
       <?php while ( have_posts() ): the_post(); ?>
 
         <!-- Set Content Layout -->
-
+        <?php the_content(); ?>
+        
       <?php endwhile; ?>
     <?php wp_reset_postdata(); endif; ?>
   </div>

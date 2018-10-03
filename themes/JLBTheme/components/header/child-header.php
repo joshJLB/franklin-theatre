@@ -32,5 +32,5 @@
 ?>
   
 <div class="child-header" style="background-image: url(<?=$header_image?>);">
-  <h1 class="title"><?=$title?></h1>
+  <!-- <h1 class="title"><?=$title?></h1> -->
 </div>
