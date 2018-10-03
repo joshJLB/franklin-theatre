@@ -3,6 +3,132 @@
 // Footer Styling
 .footer
   background-color: $color1
+  .footer-top
+    padding: 1rem 2rem 1rem 10rem
+    color: #fff 
+    +bg(cover,center)
+    +fb(center,space-between)
+    flex-wrap: wrap
+    @media only screen and (max-width: 1600px)
+      justify-content: space-around
+      padding: 1rem 10rem
+    @media #{$xlarge}
+      padding: 1rem 5rem
+    @media #{$large}
+      padding: 1rem
+    .footer-mission
+      width: 35%
+      position: relative
+      @media only screen and (max-width: 1600px)
+        margin: 1rem auto
+        width: 85%
+        text-align: center
+      @media #{$large}
+        width: 100%
+      @media #{$small}
+        margin-bottom: 2rem
+      img 
+        height: 95%
+        position: absolute 
+        top: 50%
+        right: 105%
+        transform: translateY(-50%)
+        @media only screen and (max-width: 1600px)
+          display: none
+      h3 
+        text-transform: uppercase 
+      p 
+        margin: 0
+        font-size: 1.2rem
+        line-height: 1.4rem
+    .footer-logo
+      @media only screen and (max-width: 1600px)
+        order: -1
+      .footer-socials
+        margin-top: .5rem
+        text-align: center
+        a 
+          padding: 0 .5rem
+          color: $color3
+          font-size: 1.75rem
+    .footer-contact
+      width: 25%
+      @media #{$large}
+        width: 50%
+      @media #{$small}
+        width: 100%
+        order: 4
+        text-align: center
+      a 
+        padding: .35rem 0
+        display: block
+        color: #fff 
+        width: 100%
+        font-size: 1.3rem
+        line-height: 1.5rem
+        text-transform: uppercase
+        @media #{$medium}
+          padding: 0
+          font-size: 1rem
+        p 
+          margin: 0
+      .footer-phone
+        color: $color3
+    .footer-find-us
+      padding: 1rem
+      position: relative 
+      border: 1px solid $color3
+      border-top: none
+      @media #{$small}
+        margin-bottom: 1rem
+      img 
+        margin: 0 .25rem
+      h3 
+        position: absolute
+        top: -.75rem
+        left: 1rem
+        font-size: 1.3rem
+        text-transform: uppercase
+      .footer-find-us-two
+        position: absolute 
+        top: 2px
+        left: 2px
+        height: 102%
+        width: 101%
+        border: 1px solid rgba(213,184,96,.3)
+        border-top: none
+      .footer-find-us-two:before
+        content: ''
+        position: absolute 
+        top: 0
+        left: 0 
+        height: 1px
+        width: .5rem
+        background-color: rgba(213,184,96,.3)
+      .footer-find-us-two:after
+        content: ''
+        position: absolute
+        top: 0
+        right: 0
+        height: 1px
+        width: 4.5rem
+        background-color: rgba(213,184,96,.3)
+    .footer-find-us:before
+      content: ''
+      position: absolute 
+      top: 0
+      left: 0
+      height: 1px
+      width: .7rem
+      background-color: $color3
+    .footer-find-us:after
+      content: ''
+      position: absolute 
+      top: 0
+      right: 0
+      height: 1px
+      width: 4.3rem
+      background-color: $color3
   .jlb
     color: white
     padding: 1rem
