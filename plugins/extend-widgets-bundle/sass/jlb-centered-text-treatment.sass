@@ -1,0 +1,22 @@
+@import 'variables'
+
+// Centered Text Treatment Styles
+.centered-text-container
+    margin: 2rem 0
+    text-align: center
+    h2 
+        margin-bottom: 2rem
+        font-size: 2.5rem
+        text-transform: uppercase
+    .centered-text-content
+        margin: 0 auto 
+        width: 80%
+        @media #{$small}
+            padding: 0 1rem
+            width: 100%
+    a 
+        padding: 1.5rem 2.5rem
+        display: inline-block 
+        font-size: 1.5rem
+        text-transform: uppercase 
+        +bg(contain,center)
