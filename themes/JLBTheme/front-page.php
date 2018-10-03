@@ -39,6 +39,13 @@ get_header(); ?>
       </div>
     </div>
   </section>
+
+  <section class="three">
+    <div class="three-container">
+      <?=do_shortcode('[instagram-feed num=5 cols=5 showheader=false showfollow=false]'); ?>
+    </div>
+  </section>
+
 </main>
 
 <?php get_footer();
