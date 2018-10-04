@@ -12,7 +12,7 @@
   </head>
   <body <?php body_class(); ?>>
     <header>
-      <div class="header">
+      <div class="header"> 
         <div class="header-content">
           <a class="logo-container" href="<?php echo home_url(); ?>">
             <div class="logo" style="background-image: url('<?=get_field('header_logo', 'option'); ?>');"></div>

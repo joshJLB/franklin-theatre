@@ -32,16 +32,26 @@ header
         +fb(center,flex-start)
         .header-socials
           padding-right: 1.5rem
+          @media #{$large}
+            display: none
           .header-socials-links 
             padding: .25rem .5rem
             color: $color3 
             font-size: 2rem
+            @media #{$xlarge}
+              font-size: 1.5rem
         .header-phone
             padding-left: 1.5rem
             color: $color2
             font-size: 1.5rem
+            @media #{$xlarge}
+              font-size: 1.25rem
+            @media #{$large}
+              padding-left: .5rem
       .header-top-right
         font-family: $font1
+        @media #{$large}
+          display: none
         form 
           +fb(center,flex-start)
           label
@@ -68,11 +78,15 @@ header
       padding: 1rem 1.5rem
       background: $color1 
       +fb(center,space-between)
+      @media #{$small}
+        padding: .5rem
       .header-content-two
         visibility: hidden 
         width: 20%
         @media #{$xlarge}
           visibility: visible
+        @media #{$small}
+          width: 10rem
         .logo-container-two
           height: 100%
           width: 100%
@@ -150,12 +164,13 @@ header
     //           white-space: nowrap
     //           a
     //             padding: 0.25rem
+
 header.active  
-  
+  transition: .5s
   .header
     .header-content
-      transition: .5s
       display: none
+      transition: .5s
     .header-middle
       .header-content-two
         transition: .5s
@@ -172,7 +187,7 @@ header.active
 .mobile-menu
   position: fixed
   z-index: -1
-  padding: 10rem 2rem 2rem
+  padding: 15rem 2rem 2rem
   +fb(center, flex-end)
   top: 0
   left: 0

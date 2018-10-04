@@ -1,4 +1,12 @@
       <footer class="footer">
+        <div class="footer-email-container">
+          <form action="post">
+            <label ><?=get_field('header_email_cta', 'option'); ?></label>
+            <div style="background-image: url(<?=home_url(); ?>/wp-content/uploads/2018/10/nav-email-field.png;"><input type="text" class="header-email" name="EMAIL" placeholder="email address"></div>
+            <input type="submit" class="header-submit" value="Submit">
+            <img src="<?=home_url(); ?>/wp-content/uploads/2018/10/fan-element.png" alt="">
+          </form>
+        </div>
         <section class="footer-top" style="background-image: url(<?=home_url(); ?>/wp-content/uploads/2018/10/footer.jpg);">
           <div class="footer-mission">
             <img src="<?=home_url(); ?>/wp-content/uploads/2018/10/ft-fan.png" alt="">

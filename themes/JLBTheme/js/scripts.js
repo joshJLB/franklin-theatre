@@ -24,6 +24,7 @@ $('.mobile-button').click(function() {
   $('.mobile-menu').toggleClass('active');
   $('.bar').toggleClass('active');
   $('header').find('.logo').toggleClass('active');
+  $('.header-top').toggleClass('active');
 
   // html overflow
   $('html').toggleClass('mobileScroll');
