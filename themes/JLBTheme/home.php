@@ -9,25 +9,35 @@ get_header(); ?>
   <?php get_template_part('components/header/child-header'); ?>
 
   <div class="blog-container">
-    <?php if ( have_posts() ) : ?>
-      <section class="blog-posts">
-        <?php while ( have_posts() ) : the_post() ?>
+    <?php
+      $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+      $args = array( 'posts_per_page' => '12', 'paged' => $paged );
+      $query = new WP_Query( $args );
+    ?>
+    <?php if ( $query->have_posts() ) : ?>
+      <div class="blog-posts">
+        <?php while ( $query->have_posts() ) : $query->the_post() ?>
 
-          <article class="blog-post-container">
+          <div class="blog-post-container">
             <div class="blog-post">
+              <h5><?php the_time('F j'); ?></h5>
               <h3><?php the_title(); ?></h3>
-              <h5><?php the_author(); ?></h5>
-              <?php the_excerpt(); ?>
+              <div class="blog-body">
+                <p><?php the_content(); ?></p>
+              </div>
+              <div class="blog-link">
+                <a href="<?=the_permalink()?>">Read More</a>
+              </div>
             </div>
-          </article>
+          </div>
 
         <?php endwhile; ?>
-      </section>
+      </div>
 
       <nav class="pagination">
         <div class="content">
-          <p><?php previous_posts_link( 'Previous', max_num_pages) ?></p>
-          <p><?php next_posts_link( 'Next', max_num_pages) ?></p>
+          <p><?php previous_posts_link( 'Previous', $query->max_num_pages) ?></p>
+          <p><?php next_posts_link( 'Next', $query->max_num_pages) ?></p>
         </div>
       </nav>
     <?php wp_reset_postdata(); endif; ?>
