@@ -66,7 +66,8 @@
       <!-- Mobile Menu -->
       <div class="mobile-menu" id="mobile-menu">
         <nav class="menu-container">
-          <?php wp_nav_menu( array( 'menu' => 'Header Menu' ) ); ?>
+          <?php wp_nav_menu( array( 'menu' => 'menu_left' ) ); ?>
+          <?php wp_nav_menu( array( 'menu' => 'menu_right' ) ); ?>
         </nav>
       </div>
 
