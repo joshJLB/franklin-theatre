@@ -1,0 +1,35 @@
+@import 'variables'
+
+// Contact Icons Styles
+.contact-icons-container
+    margin: 3rem auto 0
+    width: 80%
+    @media #{$xlarge}
+        width: 95%
+    .contact-icons-header
+        margin-bottom: 2rem
+        +fb(stretch,center)
+        h2 
+            padding: 0 1rem
+            margin: 0
+            font-size: 3rem
+            text-transform: uppercase
+            @media #{$small}
+                font-size: 2rem
+        .contact-icons-header-left, .contact-icons-header-right
+            flex-grow: 100
+            +bg(contain,center)
+        .contact-icons-header-left
+            transform: rotate(-180deg)
+    .contact-icons-wrapper
+        +fb(center,space-around)
+        a 
+            color: $color3
+            font-size: 5rem
+            @media #{$large}
+                font-size: 3rem
+            @media #{$small}
+                font-size: 2rem
+        a:hover 
+            color: $color4
+            transition: .5s
