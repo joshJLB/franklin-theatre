@@ -119,6 +119,12 @@ $('.hero-slider').slick({
       }
     }
   ]
-})
+});
+
+$('.one-container').slick({
+  // vertical: true,
+  slidesToShow: 1,
+  slidesToScroll: 1
+});
 
 });//close all jquery

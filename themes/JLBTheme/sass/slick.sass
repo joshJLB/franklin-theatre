@@ -83,6 +83,28 @@
               text-transform: uppercase
               @media #{$large}
                 font-size: 1.25rem
+  .one-container
+    padding: 0 5rem
+    .slick-slide
+      +fb(stretch, flex-start)
+      flex-wrap: wrap
+      .one-events
+        padding: 2rem
+        width: 25%
+        +fb(stretch,flex-start)
+        .one-events-wrapper
+          padding: .75rem
+          width: 100%
+          background: $color5
+        .one-event
+          .one-event-image
+            height: 20rem
+            +bg(cover,center)
+          .one-event-content
+            text-align: center
+            h3 
+              text-transform: uppercase
+
   .slick-list, .slick-track
     height: 100%
     .hero-slide
