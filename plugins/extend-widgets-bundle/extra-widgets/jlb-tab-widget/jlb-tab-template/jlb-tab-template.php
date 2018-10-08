@@ -6,11 +6,6 @@
 <?php foreach($tabs as $index => $tab) {
   $count++;
   $title = $tab['repeat_text'];
-  $url = "http://prod1.agileticketing.net/websales/feed.ashx?guid=e2ebf70f-bf96-4f20-9746-81ccfa2fb62b&&showslist=true&kw={$title}&format=xml&";
-  $response = wp_remote_get($url);
-  $body = wp_remote_retrieve_body($response);
-  $xml  = simplexml_load_string($body);
-  $feed = $xml->ArrayOfShows;
 ?>
     <li class="nav-item">
       <a class="nav-link <?php if($count == 1) { echo 'active'; }; ?>" data-toggle="tab" href="#tab-<?php echo $count; ?>" role="tab">
@@ -25,10 +20,22 @@
   <?php
     $count2 = 0;
    foreach($tabs as $index => $tab) {
-     $count2++;
+    $count2++;
     $content = $tab['tab_content'];
     $link_text = $tab['link_text'];
     $link = $tab['link'];
+    function urlFinder() {
+      if ($title == 'all') {
+        return "http://prod1.agileticketing.net/websales/feed.ashx?guid=e2ebf70f-bf96-4f20-9746-81ccfa2fb62b&&showslist=true&format=xml&";
+      } else {
+        return "http://prod1.agileticketing.net/websales/feed.ashx?guid=e2ebf70f-bf96-4f20-9746-81ccfa2fb62b&&showslist=true&kw={$title}&format=xml&";
+      }
+    }
+    $url = urlFinder();
+    $response = wp_remote_get($url);
+    $body = wp_remote_retrieve_body($response);
+    $xml  = simplexml_load_string($body);
+    $feed = $xml->ArrayOfShows;
   ?>
   <div class="tab-pane <?php if($count2 == 1) { echo 'active'; }; ?>" id="tab-<?php echo $count2; ?>" role="tabpanel">
     <div class="content-holder">
