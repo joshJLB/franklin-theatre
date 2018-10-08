@@ -5,7 +5,13 @@
 <ul class="nav nav-tabs" role="tablist">
 <?php foreach($tabs as $index => $tab) {
   $count++;
-  $title = $tab['repeat_text']; ?>
+  $title = $tab['repeat_text'];
+  $url = "http://prod1.agileticketing.net/websales/feed.ashx?guid=e2ebf70f-bf96-4f20-9746-81ccfa2fb62b&&showslist=true&kw={$title}&format=xml&";
+  $response = wp_remote_get($url);
+  $body = wp_remote_retrieve_body($response);
+  $xml  = simplexml_load_string($body);
+  $feed = $xml->ArrayOfShows;
+?>
     <li class="nav-item">
       <a class="nav-link <?php if($count == 1) { echo 'active'; }; ?>" data-toggle="tab" href="#tab-<?php echo $count; ?>" role="tab">
         <?php echo $title; ?>
