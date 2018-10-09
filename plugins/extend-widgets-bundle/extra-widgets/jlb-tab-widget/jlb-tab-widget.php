@@ -19,7 +19,7 @@ class JLB_Tab_Widget extends SiteOrigin_Widget {
   function initialize() {
       $this->register_frontend_styles(
           array(
-              array( 'jlb-tab-css', '/wp-content/plugins/extend-widgets-bundle/css/jlb-tab-widget.css', array() )
+              array( 'jlb-tab-css', '/wp-content/plugins/extend-widgets-bundle/css/jlb-tab-widget.min.css', array() )
           )
       );
   }
@@ -55,29 +55,6 @@ class JLB_Tab_Widget extends SiteOrigin_Widget {
                             'type' => 'text',
                             'label' => __( 'Tab Title', 'widget-form-fields-text-domain' )
                         ),
-                        'tab_content' => array(
-                                'type' => 'tinymce',
-                                'label' => __( 'Content For Tab', 'widget-form-fields-text-domain' ),
-                                'rows' => 10,
-                                'default_editor' => 'html',
-                                'button_filters' => array(
-                                    'mce_buttons' => array( $this, 'filter_mce_buttons' ),
-                                    'mce_buttons_2' => array( $this, 'filter_mce_buttons_2' ),
-                                    'mce_buttons_3' => array( $this, 'filter_mce_buttons_3' ),
-                                    'mce_buttons_4' => array( $this, 'filter_mce_buttons_5' ),
-                                    'quicktags_settings' => array( $this, 'filter_quicktags_settings' ),
-                                ),
-                            ),
-
-                            'link_text' => array(
-                                'type' => 'text',
-                                'label' => __( 'Link Text', 'widget-form-fields-text-domain' )
-                            ),
-
-                            'link' => array(
-                                'type' => 'text',
-                                'label' => __( 'Link', 'widget-form-fields-text-domain' )
-                            ),
                     )
                 )
             ),
