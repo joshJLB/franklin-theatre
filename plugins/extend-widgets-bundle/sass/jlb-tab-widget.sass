@@ -1,99 +1,153 @@
-// Arrow
-.arrow-div
-    width: 0
-    height: 0
-    border-style: solid
-    border-width: 0rem 1rem 1rem
-    border-color: transparent
-    position: absolute
-    bottom: 0rem
-    left: 50%
-    transform: translateX(-50%)
+@import 'variables'
 
-.white-bottom
-    border-bottom-color: white
-.grey-bottom
-    border-bottom-color: red
-
-// Tabs
-.tab-widget-container
-    .tab-container
-        ul
-            padding-bottom: .3rem
-            border-bottom: 0
-            display: flex
-            flex-wrap: wrap
-            li
-                width: 33.33%
-                height: 5rem
-                padding: .3rem
-                border-radius: 0
+// Widget Event styles
+.event-widget-container
+    margin: 0 auto 
+    width: 85%
+    .event-widget-filter
+        padding: 0 2.5rem
+        margin-bottom: 5rem
+        +fb(center,space-between)
+        .event-widget-radio
+            input 
+                display: none
+            label 
+                margin-right: 3rem
+                margin-bottom: 0
+                position: relative
+                font-size: 1.35rem
+                text-transform: uppercase 
+                cursor: pointer
+                img 
+                    position: absolute
+                    top: 100%
+                    left: 50%
+                    transform: translateX(-50%)
+                    visibility: hidden
+            label.active
+                img 
+                    visibility: visible
+        .event-widget-select-wrap
+            padding: .25rem
+            margin-right: 3rem
+            flex-grow: 100
+            border: 2px solid $color3
+            border-radius: 5px
+            .event-widget-select
+                padding: 1rem 
+                width: 100%
+                font-size: 1.35rem
+                text-transform: uppercase
+                border: 2px solid $color3
+                border-radius: 5px
+        .event-widget-select-wrap:last-child 
+            margin-right: 0
+    .event-widget-layout-buttons
+        padding: 0 2.5rem
+        +fb(center,flex-end)
+        img 
+            margin-left: 1rem
+    .event-widget-title
+        padding: 0 2.5rem
+        +fb(stretch,center)
+        h2 
+            padding: 0 1rem
+            margin: 0
+            font-size: 3rem
+            text-transform: uppercase
+            @media #{$small}
+                font-size: 1.5rem
+        .event-border-left, .event-border-right
+            flex-grow: 100
+            +bg(contain,center)
+        .event-border-left
+            transform: rotate(-180deg)
+    .event-widget-cards-container
+        +fb(stretch,flex-start)
+        flex-wrap: wrap 
+        .event-widget-card-wrapper
+            padding: 2.5rem
+            width: 25%
+            .event-widget-card
                 text-align: center
-                a.nav-link
-                    background-color: red
-                    border-radius: 0
-                    border: 0
-                    position: relative 
-                    width: 100%
-                    color: black
-                    height: 100%
-                    display: flex
-                    justify-content: center
-                    align-items: center
-                    font-family: secondaryFont
-                    font-size: 1.4rem
-                    transition: .5s
-                    .white-bottom
-                        z-index: 9
-                    .grey-bottom
-                        z-index: 10
-                        bottom: -.6rem
-                    .arrow-div
+                .event-widget-image
+                    margin-bottom: .25rem
+                    position: relative
+                    height: 15rem
+                    +bg(cover,center)
+                    +fb(center,center)
+                    @media #{$small}
+                        height: 10rem
+                    .overlay
                         opacity: 0
-                a.nav-link.active, a.hover
-                    background-color: green
-                    color: white
-                    border-radius: 0
-                    border: 0
-                    .arrow-div
+                    .event-widget-link-wrapper
+                        z-index: 3
+                        position: relative
+                        visibility: hidden
+                        +fb(center,center)
+                        flex-direction: column
+                        a 
+                            padding: 1rem 1.5rem
+                            margin: 0 auto 
+                            width: 100%
+                            display: inline-block
+                            color: #fff 
+                            font-size: 1.25rem
+                            text-transform: uppercase
+                            +bg(contain,center)
+                            @media #{$small}
+                                font-size: .9rem
+                .event-widget-image:hover
+                    .overlay
                         opacity: 1
-
-    // .tab-content
-    //     background-color: white
-    //     margin: 0 .3rem .3rem .3rem
-    //     border-top: 0
-    //     .tab-pane
-    //         .content-holder
-    //             padding: 3rem 1rem 2rem
-    //             color: white
-    //             max-width: 55rem
-    //             margin: 0 auto
-    //             text-align: center
-    //             p:last-child
-    //                 margin-bottom: 0
-    //         a.link-bottom p
-    //             width: 100%
-    //             background-color: white
-    //             color: primaryColor
-    //             text-align: center
-    //             padding: .7rem 1rem
-    //             text-transform: uppercase
-    //             transition: .5s
-    //             background-color: #f3f3f3
-    //             border-bottom: .3rem solid #f3f3f3
-    //             border-top: .3rem solid #f3f3f3
-    //             position: relative
-    //         a.link-bottom p:after
-    //             content: ""
-    //             width: 0%
-    //             height: .3rem
-    //             background-color: black
-    //             position: absolute
-    //             bottom: -.3rem
-    //             left: 50%
-    //             transform: translateX(-50%)
-    //             transition: .5s
-    //         a.link-bottom p:hover
-    //             color: green
-    //         a.link-bottom p:hover:after
-    //             width: 100%
+                        transition: .5s
+                    .event-widget-link-wrapper
+                        visibility: visible
+                        transition: .5s
+                .event-widget-time
+                    +fb(center,center)
+                    p 
+                        margin: 0
+                        font-size: 1.25rem
+                    img 
+                        padding: 0 .25rem
+                .event-widget-description
+                    display: none
+                .event-widget-link-wrapper-two
+                    display: none
+    .event-widget-cards-container.active
+        padding-top: 2.5rem
+        display: block
+        .event-widget-card-wrapper
+            padding: 1rem 2.5rem
+            width: 100%
+            .event-widget-card
+                text-align: left
+                +fb(stretch,flex-start)
+                .event-widget-image
+                    margin-bottom: 0
+                    width: 20%
+                    height: auto
+                    .event-widget-link-wrapper
+                        display: none
+                .event-widget-image:hover
+                    .overlay
+                        opacity: 0
+                .event-content-wrap
+                    padding-left: 2.5rem
+                    width: 80% 
+                    .event-widget-time
+                        justify-content: flex-start
+                    .event-widget-description
+                        display: block
+                    .event-widget-link-wrapper-two
+                        +fb(center,flex-end)
+                        a 
+                            padding: 1rem 3rem
+                            margin-left: .5rem
+                            display: inline-block
+                            font-size: 1.25rem
+                            text-transform: uppercase
+                            +bg(contain,center)
+                            @media #{$small}
+                                font-size: .9rem

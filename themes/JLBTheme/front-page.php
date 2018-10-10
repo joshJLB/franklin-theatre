@@ -36,16 +36,6 @@ get_header(); ?>
         <?php
           $i = 0;
           $count = 0;
-          // $shows = array();
-          // $dates = array();
-          // foreach ($feed->Show as $show) {
-          //     $shows[] = $show;
-          //     $dates[] = DateTime::createFromFormat('Y-m-dTH', $show['CurrentShowings'->Showing->StartDate])->getTimestamp();
-          // }
-          // array_multisort($dates, SORT_DESC, $shows);
-          // foreach ($shows as $show) {
-          //   echo $show->Name;
-          // }
           // loops through all events 
           foreach($feed->Show as $show) {
             $name = (string)$show->Name;

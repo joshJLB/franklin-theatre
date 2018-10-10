@@ -129,4 +129,25 @@ $('.one-content-container').slick({
   nextArrow: "<button type='button' class='slick-next pull-right'><i class='fal fa-angle-right' aria-hidden='true'></i></button>",
 });
 
+// Event Widget Functions
+$('.event-grid').click(function() {
+  if ($('.event-grid').hasClass('active')) {
+    return;
+  } else {
+    $('.event-grid').addClass('active');
+    $('.event-list').removeClass('active');
+    $('.event-widget-cards-container').toggleClass('active');
+  }
+});
+
+$('.event-list').click(function() {
+  if ($('.event-list').hasClass('active')) {
+    return;
+  } else {
+    $('.event-list').addClass('active');
+    $('.event-grid').removeClass('active');
+    $('.event-widget-cards-container').toggleClass('active');
+  }
+});
+
 });//close all jquery
