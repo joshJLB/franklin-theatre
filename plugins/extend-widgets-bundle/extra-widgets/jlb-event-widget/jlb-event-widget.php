@@ -45,7 +45,17 @@ class JLB_Event_Widget extends SiteOrigin_Widget {
     // https://siteorigin.com/docs/widgets-bundle/form-building/form-fields/
     return array(
       // put all fields here
-        
+      'categories' => array(
+        'type' => 'repeater',
+        'label' => __('Categories', 'widget-form-fields-text-domain'),
+        'item_name' => __('Category', 'widget-form-fields-text-domain'),
+        'fields' => array(
+          'category' => array(
+            'type' => 'text',
+            'label' => __('Category', 'widget-form-fields-text-domain')
+          ),
+        )
+      ),
     );
   }
 }

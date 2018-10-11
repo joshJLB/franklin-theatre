@@ -26,23 +26,23 @@ get_header(); ?>
         <a href="http://google.com" style="background-image: url(<?=home_url(); ?>/wp-content/uploads/2018/10/view-details-button.png;">See All Events</a>      
       </div>
       <?php 
-        $url = "http://prod1.agileticketing.net/websales/feed.ashx?guid=e2ebf70f-bf96-4f20-9746-81ccfa2fb62b&&showslist=true&format=xml&";
+        $url = "http://prod1.agileticketing.net/websales/feed.ashx?guid=e2ebf70f-bf96-4f20-9746-81ccfa2fb62b&&format=xml&";
         $response = wp_remote_get($url);
         $body = wp_remote_retrieve_body($response);
         $xml  = simplexml_load_string($body);
-        $feed = $xml->ArrayOfShows;
+        $feed = $xml->ArrayOfEvent;
       ?>
       <div class="one-content-container">
         <?php
           $i = 0;
           $count = 0;
           // loops through all events 
-          foreach($feed->Show as $show) {
-            $name = (string)$show->Name;
-            $image = (string)$show->EventImage;
-            $linkDetails = (string)$show->InfoLink;
-            $linkPurchase = (string)$show->CurrentShowings->Showing->LegacyPurchaseLink;
-            $dateGet = (string)$show->CurrentShowings->Showing->StartDate;
+          foreach($feed->Event as $event) {
+            $name = (string)$event->Name;
+            $image = (string)$event->EventImage;
+            $linkDetails = (string)$event->InfoLink;
+            $linkPurchase = (string)$event->BuyLink;
+            $dateGet = (string)$event->StartDate;
             $tempDate = date_create($dateGet);
             $dateOne = date_format($tempDate, 'F jS');
             $dateTwo = date_format($tempDate, 'g:i:A');

@@ -1,6 +1,8 @@
 <div class="event-widget-container">
   <?php
     $widgetID  = $instance['panels_info']['id'];
+    $repeater = $instance['categories'];
+    $count = 1;
   ?>
   <div class="event-widget-filter">
     <form class="event-widget-radio" id="radio">
@@ -8,26 +10,16 @@
       <label for="radio-1" class="active">All
         <img src="<?=home_url(); ?>/wp-content/uploads/2018/10/bottom-fan.jpg" alt="">
       </label>
-      <input id="radio-2" type="radio" name="radioName" value="Red">
-      <label for="radio-2">Red
-        <img src="<?=home_url(); ?>/wp-content/uploads/2018/10/bottom-fan.jpg" alt="">
-      </label>
-      <input id="radio-3" type="radio" name="radioName" value="Franklin">
-      <label for="radio-3">Franklin
-        <img src="<?=home_url(); ?>/wp-content/uploads/2018/10/bottom-fan.jpg" alt="">
-      </label>
-      <input id="radio-4" type="radio" name="radioName" value="Category">
-      <label for="radio-4">Category
-        <img src="<?=home_url(); ?>/wp-content/uploads/2018/10/bottom-fan.jpg" alt="">
-      </label>
-      <input id="radio-5" type="radio" name="radioName" value="Category">
-      <label for="radio-5">Category
-        <img src="<?=home_url(); ?>/wp-content/uploads/2018/10/bottom-fan.jpg" alt="">
-      </label>
-      <input id="radio-6" type="radio" name="radioName" value="Category">
-      <label for="radio-6">Category
-        <img src="<?=home_url(); ?>/wp-content/uploads/2018/10/bottom-fan.jpg" alt="">
-      </label>
+      <?php foreach($repeater as $index => $slide){
+        $count++;
+        $category = $slide['category'];
+      ?>
+        <input id="radio-<?=$count?>" type="radio" name="radioName" value="<?=$category?>">
+        <label for="radio-<?=$count?>"><?=$category?>
+          <img src="<?=home_url(); ?>/wp-content/uploads/2018/10/bottom-fan.jpg" alt="">
+        </label>
+      <?php } ?>
+      
     </form>
 
     <div class="event-widget-select-wrap">
@@ -39,7 +31,7 @@
         <option value="12f03090-740d-429b-a093-73b1f3960f83&">Live Theatre</option>
       </select>
     </div>
-
+  
     <div class="event-widget-select-wrap">
       <select class="event-widget-select" id="event-date-<?=$widgetID?>">
         <option value="" disabled selected>Event Date</option>
@@ -79,7 +71,7 @@
         startDate = yyyy + '-' + mm + '-' + dd;
         
         var endDate = endOfMonth(startDate);
-        var url = `http://prod1.agileticketing.net/websales/feed.ashx?guid=e2ebf70f-bf96-4f20-9746-81ccfa2fb62b&&showslist=true&startdate=${startDate}&enddate=${endDate}&format=json&`;
+        var url = `http://prod1.agileticketing.net/websales/feed.ashx?guid=e2ebf70f-bf96-4f20-9746-81ccfa2fb62b&&startdate=${startDate}&enddate=${endDate}&format=json&`;
         
         var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         var newMonth = new Date();
@@ -97,15 +89,15 @@
             $.get(url, function(data, status) {
               // Deletes current body content and appends updated content parameters for the DOM.
               $('.event-widget-card-wrapper').remove();
-              let results = data.ArrayOfShows;
+              let results = data.ArrayOfEvent;
               for (let i = 0; i < results.length; i++) {
-                let monthDay = currentMonth + ' ' + nth(new Date(results[i].CurrentShowings[0].StartDate).getDate()); // Concats the current month with the day of the month. "nth" funtion concats the day with the appropriate suffix
-                let time = new Date(results[i].CurrentShowings[0].StartDate).toLocaleTimeString().replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3");
+                let monthDay = currentMonth + ' ' + nth(new Date(results[i].StartDate).getDate()); // Concats the current month with the day of the month. "nth" funtion concats the day with the appropriate suffix
+                let time = new Date(results[i].StartDate).toLocaleTimeString().replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3"); // Gets the time of the day in 12hour format and concats with appropriate suffx
                 let name = `<h3>${results[i].Name}</h3>`;
                 let image = results[i].EventImage;
                 let description = results[i].ShortDescription;
                 let details = results[i].InfoLink;
-                let tickets = results[i].CurrentShowings[0].LegacyPurchaseLink;
+                let tickets = results[i].BuyLink;
                 let contentElements = `<div class="event-widget-card-wrapper">
                                   <div class="event-widget-card">
                                     <div class="event-widget-image" style="background-image: url(${image});">
@@ -160,7 +152,7 @@
         function updateDOM() {
           // Updates what is printed to the DOM.
           if (category == '' && guidNumber && startDate) {
-            url = `http://prod1.agileticketing.net/websales/feed.ashx?guid=${guidNumber}&showslist=true&startdate=${startDate}&enddate=${endDate}&kw=&format=json&`;
+            url = `http://prod1.agileticketing.net/websales/feed.ashx?guid=${guidNumber}&startdate=${startDate}&enddate=${endDate}&kw=&format=json&`;
             // Deletes current title content and appends updated content parameters for the DOM.
             $('.event-widget-title').remove();
             let headerElements = `<div class="event-widget-title">
@@ -172,15 +164,15 @@
             $.get(url, function(data, status) {
               // Deletes current body content and appends updated content parameters for the DOM.
               $('.event-widget-card-wrapper').remove();
-              let results = data.ArrayOfShows;
+              let results = data.ArrayOfEvent;
               for (let i = 0; i < results.length; i++) {
-                let monthDay = currentMonth + ' ' + nth(new Date(results[i].CurrentShowings[0].StartDate).getDate()); // Concats the current month with the day of the month. "nth" funtion concats the day with the appropriate suffix
-                let time = new Date(results[i].CurrentShowings[0].StartDate).toLocaleTimeString().replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3");
+                let monthDay = currentMonth + ' ' + nth(new Date(results[i].StartDate).getDate()); // Concats the current month with the day of the month. "nth" funtion concats the day with the appropriate suffix
+                let time = new Date(results[i].StartDate).toLocaleTimeString().replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3"); // Gets the time of the day in 12hour format and concats with appropriate suffx
                 let name = `<h3>${results[i].Name}</h3>`;
                 let image = results[i].EventImage;
                 let description = results[i].ShortDescription;
                 let details = results[i].InfoLink;
-                let tickets = results[i].CurrentShowings[0].LegacyPurchaseLink;
+                let tickets = results[i].BuyLink;
                 let contentElements = `<div class="event-widget-card-wrapper">
                                   <div class="event-widget-card">
                                     <div class="event-widget-image" style="background-image: url(${image});">
@@ -209,7 +201,7 @@
               }
             });
           } else {
-            url = `http://prod1.agileticketing.net/websales/feed.ashx?guid=${guidNumber}&showslist=true&kw=${category}&startdate=${startDate}&enddate=${endDate}&format=json&`;
+            url = `http://prod1.agileticketing.net/websales/feed.ashx?guid=${guidNumber}&kw=${category}&startdate=${startDate}&enddate=${endDate}&format=json&`;
             // Deletes current title content and appends updated content parameters for the DOM.
             $('.event-widget-title').remove();
             let headerElements = `<div class="event-widget-title">
@@ -221,15 +213,15 @@
             $.get(url, function(data, status) {
               // Deletes current body content and appends updated content parameters for the DOM.
               $('.event-widget-card-wrapper').remove();
-              let results = data.ArrayOfShows;
+              let results = data.ArrayOfEvent;
               for (let i = 0; i < results.length; i++) {
-                let monthDay = currentMonth + ' ' + nth(new Date(results[i].CurrentShowings[0].StartDate).getDate()); // Concats the current month with the day of the month. "nth" funtion concats the day with the appropriate suffix
-                let time = new Date(results[i].CurrentShowings[0].StartDate).toLocaleTimeString().replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3");
+                let monthDay = currentMonth + ' ' + nth(new Date(results[i].StartDate).getDate()); // Concats the current month with the day of the month. "nth" funtion concats the day with the appropriate suffix
+                let time = new Date(results[i].StartDate).toLocaleTimeString().replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3"); // Gets the time of the day in 12hour format and concats with appropriate suffx
                 let name = `<h3>${results[i].Name}</h3>`;
                 let image = results[i].EventImage;
                 let description = results[i].ShortDescription;
                 let details = results[i].InfoLink;
-                let tickets = results[i].CurrentShowings[0].LegacyPurchaseLink;
+                let tickets = results[i].BuyLink;
                 let contentElements = `<div class="event-widget-card-wrapper">
                                   <div class="event-widget-card">
                                     <div class="event-widget-image" style="background-image: url(${image});">
