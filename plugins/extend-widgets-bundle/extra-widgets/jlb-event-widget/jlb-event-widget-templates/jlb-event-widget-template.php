@@ -35,18 +35,30 @@
     <div class="event-widget-select-wrap">
       <select class="event-widget-select" id="event-date-<?=$widgetID?>">
         <option value="" disabled selected>Event Date</option>
-        <option value="2019-1-1">January</option>
-        <option value="2019-2-1">February</option>
-        <option value="2019-3-1">March</option>
-        <option value="2019-4-1">April</option>
-        <option value="2019-5-1">May</option>
-        <option value="2019-6-1">June</option>
-        <option value="2019-7-1">July</option>
-        <option value="2019-8-1">August</option>
-        <option value="2019-9-1">September</option>
-        <option value="2018-10-1">October</option>
-        <option value="2018-11-1">November</option>
-        <option value="2018-12-1">December</option>
+        <?php
+        $month = date("m");
+        $dateObj = DateTime::createFromFormat('!m', $month);
+        $monthName = $dateObj->format('F');
+        $year = date("Y");
+        $counter = 0;
+        ?>
+        <!-- Loops through months starting at the current date. The year increases when $month reaches 12 -->
+        <?php while ($counter <= 11):
+          $counter++;
+        ?>
+          <option value="<?=$year?>-<?=$month?>-1"><?=$monthName?></option>
+        <?php  if ($month == 12):
+            $month = 01;
+            $year++;
+            $dateObj = DateTime::createFromFormat('!m', $month);
+            $monthName = $dateObj->format('F');
+          else:
+            $month++;
+            $dateObj = DateTime::createFromFormat('!m', $month);
+            $monthName = $dateObj->format('F');
+          endif;
+        endwhile;
+        ?>
       </select>
     </div>
   </div>
@@ -57,6 +69,7 @@
         var category = '';
         var guidNumber = 'e2ebf70f-bf96-4f20-9746-81ccfa2fb62b&';
         
+        // Gets current date and formats to yyyy-mm-dd
         var startDate = new Date();
         var dd = startDate.getDate();
         var mm = startDate.getMonth()+1; 
@@ -67,17 +80,17 @@
         if(mm<10) {
             mm = '0'+mm
         } 
-        // Gets today's date
         startDate = yyyy + '-' + mm + '-' + dd;
         
         var endDate = endOfMonth(startDate);
         var url = `http://prod1.agileticketing.net/websales/feed.ashx?guid=e2ebf70f-bf96-4f20-9746-81ccfa2fb62b&&startdate=${startDate}&enddate=${endDate}&format=json&`;
         
+        // Gets current month name
         var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         var newMonth = new Date();
-        // Gets current month
         var currentMonth = monthNames[newMonth.getMonth()]; 
         
+        // This is what initially renders in the DOM
         var initialDOM = 
             $('.event-widget-title').remove();
             let headerElements = `<div class="event-widget-title">
@@ -125,6 +138,7 @@
                 $('.event-widget-cards-container').append(contentElements);
               }
             });
+
         $('#radio').change(function() {
           // Gets value of selected radio button
           category = $('input[name=radioName]:checked', '#radio').val();
@@ -267,6 +281,7 @@
           let month = monthNames[date.getMonth()];
           return month;
         }
+        // Gets the suffix for the day of the month
         function nth(n){return n + [,'st','nd','rd'][n%100>>3^1&&n%10]||n + 'th'}
       });
     </script>
