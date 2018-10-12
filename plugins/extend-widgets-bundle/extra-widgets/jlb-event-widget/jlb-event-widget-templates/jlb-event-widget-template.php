@@ -272,7 +272,7 @@
     </script>
 
   <div class="event-widget-layout-buttons">
-      <img class="event-grid active" src="<?=home_url(); ?>/wp-content/uploads/2018/10/grid-icon.png" alt="">
+      <img class="event-grid active" src="<?=home_url(); ?>/wp-content/uploads/2018/10/gridicon.png" alt="">
       <img class="event-list" src="<?=home_url(); ?>/wp-content/uploads/2018/10/list-icon.png" alt="">
   </div>
   <div class="event-widget-title-container">

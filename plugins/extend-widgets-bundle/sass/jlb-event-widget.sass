@@ -76,6 +76,7 @@
                 padding: 1rem 
                 width: 100%
                 font-size: 1.35rem
+                cursor: pointer
                 text-transform: uppercase
                 border: 2px solid $color3
                 border-radius: 5px
@@ -97,6 +98,10 @@
             padding: 0 2rem
         img 
             margin-left: 1rem
+            filter: grayscale(100%)
+            cursor: pointer
+        img.active 
+            filter: grayscale(0)
     .event-widget-title
         padding: 0 2.5rem
         +fb(stretch,center)
