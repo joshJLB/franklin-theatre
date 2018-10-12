@@ -72,10 +72,17 @@
                             border: 1px solid $color3
                             border-radius: 5px
                             height: 15rem
+                            position: relative
                             +fb(space-between,flex-start)
                             flex-direction: column
                             @media only screen and (max-width: 485px)
                                 height: 17rem
+                            img 
+                                position: absolute
+                                top: 4rem
+                                left: 50%
+                                width: 110%
+                                transform: translateX(-50%)
                             h4 
                                 padding: 1.25rem 0
                                 margin-bottom: 2rem

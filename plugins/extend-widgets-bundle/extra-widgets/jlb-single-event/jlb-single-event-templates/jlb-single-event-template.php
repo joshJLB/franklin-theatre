@@ -38,6 +38,7 @@
                 <div class="single-event-card">
                     <div class="single-event-card-content-wrapper">
                         <div class="single-event-card-content">
+                            <img src="<?=home_url(); ?>/wp-content/uploads/2018/10/break.jpg" alt="">
                             <h4><?=$dateOne?></h4> 
                             <p class="single-event-time"><?=$dateTwo?></p>
                             <p class="single-event-price"><?=$price?></p>
