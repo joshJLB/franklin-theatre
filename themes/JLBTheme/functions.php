@@ -54,8 +54,8 @@ function custom_sidebars() {
 	register_sidebar( $sidebar1 );
 
   $sidebar2 = array(
-		'id'            => 'sidebarBlog',
-		'class'         => 'sideBar',
+		'id'            => 'sidebar_blog',
+		'class'         => 'side_bar',
 		'name'          => __( 'Blog Sidebar', 'text_domain' ),
 	);
 	register_sidebar( $sidebar2 );
@@ -74,15 +74,15 @@ show_admin_bar(false);
 
 
 //////////// Exclude pages from WordPress Search
-// if (!is_admin()) {
-// function wpb_search_filter($query) {
-// if ($query->is_search) {
-// $query->set('post_type', 'post');
-// }
-// return $query;
-// }
-// add_filter('pre_get_posts','wpb_search_filter');
-// }
+if (!is_admin()) {
+function wpb_search_filter($query) {
+if ($query->is_search) {
+$query->set('post_type', 'post');
+}
+return $query;
+}
+add_filter('pre_get_posts','wpb_search_filter');
+}
 
 
 // add this to your theme's functions.php

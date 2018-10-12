@@ -57,6 +57,7 @@
             padding: .25rem
             margin-right: 3rem
             flex-grow: 100
+            position: relative
             border: 2px solid $color3
             border-radius: 5px
             @media #{$xxlarge}
@@ -81,8 +82,17 @@
                 border: 2px solid $color3
                 border-radius: 5px
                 -webkit-appearance: none
+                -moz-appearance: none
                 @media only screen and (max-width: 1585px)
                     font-size: 1rem
+            .event-widget-select::-ms-expand
+                display: none
+            .event-widget-select-button
+                color: $color3
+                position: absolute
+                top: 50%
+                right: 1rem
+                transform: translateY(-50%)
         .event-widget-select-wrap:last-child 
             margin-right: 0
             @media #{$large}

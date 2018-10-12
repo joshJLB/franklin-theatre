@@ -17,13 +17,15 @@ var paths = {
   js: './js/*.js',
   sass: './sass/**/*.sass',
   compiled: './compiled',
+  compiledTwo: '../../plugins/extend-widgets-bundle/js',
   css: './css/*.css',
+  widgetScripts: '../../plugins/extend-widgets-bundle/js/jlb-event-widget.js',
   widgetStyles: '../../plugins/extend-widgets-bundle/sass/*.sass',
   widgetTemplates: '../../plugins/extend-widgets-bundle/extra-widgets/**/*-templates/*.php'
 };
 
 // default when you run gulp
-gulp.task('default', ['sass', 'scripts', 'lint', 'compile-css', 'compile-js'], function() {
+gulp.task('default', ['sass', 'scripts', 'scriptsTwo', 'lint', 'compile-css', 'compile-js'], function() {
   console.log('Hey... Don\'t mess up!');
   gulp.watch(paths.sass, ['sass']);
   gulp.watch(paths.js, ['scripts', 'lint']);
@@ -74,9 +76,22 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest(paths.compiled));
 });
 
+gulp.task('scriptsTwo', function() {
+  gulp.src(paths.widgetScripts)
+    .pipe(babel({
+      presets: ['@babel/env']
+    }))
+    .pipe(uglify())
+    .pipe(rename({
+      basename: 'jlb-event-widget',
+      extname: '.min.js'
+    }))
+    .pipe(gulp.dest(paths.compiledTwo));
+});
+
 // lint task to check syntax
 gulp.task('lint', function() {
-  return gulp.src([paths.scripts])
+  return gulp.src(paths.scripts)
     .pipe(eslint())
     .pipe(eslint.format());
 });

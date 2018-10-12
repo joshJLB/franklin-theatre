@@ -10,7 +10,7 @@
     <div class="image-text-content">
         <h3><?=$title?></h3>
         <div class="image-text-content-inner">
-        <p><?=$content?></p>
+            <p><?=$content?></p>
         </div>
         <a href="<?=$linkURL?>" style="background-image: url(<?=home_url(); ?>/wp-content/uploads/2018/10/hero-button.png);"><?=$linkText?></a>
     </div>

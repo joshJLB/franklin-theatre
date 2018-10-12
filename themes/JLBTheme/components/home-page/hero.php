@@ -27,7 +27,7 @@
           <div class="hero-slide">
             <div class="hero-image" style="background-image: url(<?=get_sub_field('image'); ?>);"></div>
             <div class="hero-content">
-              <h2><?=get_sub_field('title'); ?></h2>
+              <h2><?=get_sub_field('title'); ?></h2> 
               <p>
                 <?=get_sub_field('date'); ?> 
                 <img src="<?=home_url(); ?>/wp-content/uploads/2018/10/spacer-element.png" alt=""> 

@@ -17,13 +17,13 @@ class JLB_Event_Widget extends SiteOrigin_Widget {
         array( 'jlb-event-widget-css', '/wp-content/plugins/extend-widgets-bundle/css/jlb-event-widget.min.css', array() ),
       )
     );
-    /*
+    
     $this->register_frontend_scripts(
       array(
-        array( 'jlb-event-widget-js', '/wp-content/plugins/extend-widgets-bundle/js/jlb-event-widget.js', array( 'jquery' ), '1.0')
+        array( 'jlb-event-widget-js', '/wp-content/plugins/extend-widgets-bundle/js/jlb-event-widget.min.js', array( 'jquery' ), '1.0')
       )
     );
-    */
+    
   }
   function __construct() {
     //Call the parent constructor with the required arguments.

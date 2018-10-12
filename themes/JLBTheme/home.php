@@ -14,6 +14,9 @@ get_header(); ?>
       $args = array( 'posts_per_page' => '12', 'paged' => $paged );
       $query = new WP_Query( $args );
     ?>
+    <div class="blog-sidebar">
+      <?php dynamic_sidebar('sidebar_blog')?>
+    </div>
     <?php if ( $query->have_posts() ) : ?>
       <div class="blog-posts">
         <?php while ( $query->have_posts() ) : $query->the_post() ?>
